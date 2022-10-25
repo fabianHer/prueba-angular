@@ -1,0 +1,28 @@
+.container {
+    background-color: khaki;
+    height: 50vh;
+    margin: 5%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+.mat-form-field ~ .mat-form-field {
+    margin-left: 16px;
+  }
+.mat-card-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.styleButton{
+    margin-top: 13px;
+ }
+ .invalid{
+    color:#f44336;
+}

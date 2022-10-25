@@ -1,0 +1,71 @@
+<div class="container">
+    <mat-card class="contact-card">
+        <mat-card-header>
+          <mat-card-title>Formulario</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form id="contactForm" [formGroup]="formularioExample" (ngSubmit)="enviarFormulario()">
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Nombre</mat-label>
+              <input matInput placeholder="Nombre" formControlName="nombre" type="text">  
+              <mat-error *ngIf="getNombre?.errors?.['minlength']"> Mínimo 3 carácteres</mat-error>           
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Apellido</mat-label>
+              <input matInput placeholder="Apellido" formControlName="apellido" type="text">  
+              <mat-error *ngIf="getApellido?.errors?.['minlength']"> Mínimo 3 carácteres</mat-error>   
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Documento</mat-label>
+              <input matInput placeholder="Documento" formControlName="documento" type="text">  
+              <mat-error *ngIf="getDocumento?.errors?.['minlength']"> Mínimo 10 carácteres</mat-error>   
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Correo</mat-label>
+              <input matInput placeholder="Correo" formControlName="correo" type="email"> 
+              <mat-error *ngIf="getCorreo?.errors?.['email']"> Los datos debern ser tipo email</mat-error>  
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Genero</mat-label>
+              <mat-select formControlName="genero"  #mySelect (selectionChange)="habilitarCampo(mySelect.value)">
+                <mat-option>Seleccione</mat-option>
+                <mat-option value="masculino">Masculino</mat-option>
+                <mat-option value="femenino">Femenino</mat-option>
+              </mat-select>
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill" *ngIf="mostrarEdad">
+              <mat-label>Edad</mat-label>
+              <input matInput placeholder="Edad" formControlName="edad" type="number"> 
+              <mat-error *ngIf="getEdad?.errors?.['min']"> Mínimo 0 carácteres</mat-error>  
+              <mat-error *ngIf="getEdad?.errors?.['max']"> Máximo 100 carácteres</mat-error> 
+            </mat-form-field>
+          </div>
+          <div>
+              <mat-label>Pasatiempo</mat-label>
+          </div>
+          <div>    
+              <mat-radio-group formControlName="pasatiempo" type="radio"  [ngClass]="{'invalid': submitted && getPasatiempo?.errors?.['required']}">
+                <mat-radio-button value="leer">Leer</mat-radio-button>
+                <mat-radio-button value="caminar">Caminar</mat-radio-button>
+                <mat-radio-button value="dormir">Dormir</mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="submitted && getPasatiempo?.errors?.['required']"> Seleccione pasatiempo</mat-error> 
+
+
+          </div>
+          <div>
+            <button class="styleButton" [disabled]="formularioExample.invalid" mat-flat-button color="primary" type="submit">Enviar</button>
+          </div>
+          </form>    
+          
+        </mat-card-content>
+    </mat-card>
+</div>
